@@ -2,7 +2,7 @@ const db = require("../config");
 const Customer = db.customers;
 
 const validateCPF = (cpf) => {
-  return false;
+  return true;
 };
 
 // Create and Save a new Customer
@@ -147,9 +147,9 @@ exports.deleteAll = (req, res) => {
     });
 };
 
-// Find all published customers
-exports.findAllPublished = (req, res) => {
-  Customer.find({ published: true })
+// Find all telefone customers
+exports.findAllTelefone = (req, res) => {
+  Customer.find({ telefone: true })
     .then((data) => {
       res.send(data);
     })
