@@ -38,7 +38,7 @@ describe("User Endpoints", () => {
     const res = await request(app).post("/api/customers/findByCPF").send({
       cpf: "88522633910",
     });
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("success");
     expect(res.body).toHaveProperty("msg");
     expect(res.body).toEqual({

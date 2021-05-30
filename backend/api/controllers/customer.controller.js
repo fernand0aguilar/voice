@@ -42,6 +42,7 @@ function ValidateCPF(cpfString) {
     }
 
     validated = true;
+    console.log(validated)
     return validated;
   }
 

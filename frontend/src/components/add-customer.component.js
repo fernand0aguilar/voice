@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import CustomerDataService from "../services/customer.service";
 
 const AddCustomer = () => {
-  const [id, setID] = useState(null);
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -28,14 +27,10 @@ const AddCustomer = () => {
   };
 
   const newCustomer = () => {
-    // this.setState({
-    //   id: null,
-    //   title: "",
-    //   sobrenome: "",
-    //   telefone: "",
-    //   cpf: "",
-    // });
-    console.log('new')
+    setNome("");
+    setSobrenome("");
+    setTelefone("");
+    setCPF("");
     setSubmitted(false)
   };
 

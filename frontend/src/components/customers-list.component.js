@@ -61,7 +61,7 @@ export default class CustomersList extends Component {
   }
 
   render() {
-    const { searchTitle, customers, currentCustomer, currentIndex } = this.state;
+    const { customers, currentCustomer, currentIndex } = this.state;
 
     return (
       <div className="list row">
