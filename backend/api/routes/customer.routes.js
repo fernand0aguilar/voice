@@ -21,8 +21,8 @@ module.exports = (app) => {
   // Delete a Customer with id
   router.delete("/:id", customers.delete);
 
-  // Create a new Customer
-  router.delete("/", customers.deleteAll);
+  // // Create a new Customer
+  // router.delete("/", customers.deleteAll);
 
   app.use("/api/customers", router);
 };

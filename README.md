@@ -20,6 +20,18 @@ cd backend/
 yarn install
 yarn serve
 ```
-## Run unit tests
+Run backend unit tests with
 > yarn tests
 
+
+
+## Backend Endpoints
+
+```
+* GET /api/customers/ == customers.findAll
+* GET /api/customers/:id == customers.findOne
+* POST /api/customers/ == customers.create
+* POST /api/customers/findByCPF == customers.findByCPF
+* PUT /api/customers/:id == customers.update(id)
+* DELETE /api/customers/:id == customers.delete(id)
+```
