@@ -41,6 +41,7 @@ const AddCustomer = () => {
 
   return (
     <div className="submit-form">
+      <h4>Add a new user</h4>
       <div>
         <div className="form-group">
           <label htmlFor="nome">Nome: </label>

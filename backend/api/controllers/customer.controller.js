@@ -63,11 +63,11 @@ exports.findOne = (req, res) => {
   Customer.findById(id)
     .then((data) => {
       if (!data)
-        res.status(404).send({ msg: "Not found Customer with id " + id });
+        res.status(404).send({ msg: "Not found Customer with id " });
       else res.send(data);
     })
     .catch((err) => {
-      res.status(500).send({ msg: "Error retrieving Customer with id=" + id });
+      res.status(500).send({ msg: "Error retrieving Customer"});
     });
 };
 
@@ -83,7 +83,8 @@ exports.findByCPF = (req, res) => {
       else res.send(data);
     })
     .catch((err) => {
-      res.status(500).send({ msg: "Error retrieving Customer with id=" + id });
+      console.log(err)
+      res.status(400).send({success: false, msg: "Informações de CPF não armazenadas."});
     });
 };
 

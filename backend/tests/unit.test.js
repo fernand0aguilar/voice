@@ -1,21 +1,30 @@
 const request = require("supertest");
 const app = require("../server");
+const db = require("../api/config/index");
 
-describe('Litmus Test', () => {
-    it('should test that true === true', () => {
-      expect(true).toBe(true)
-    })
-  })
-  
+jest.setTimeout(30000);
 
-describe('Test Base API endpoint', () => {
-  it('should test that endpoint is reached', async () => {
+afterAll(done => {
+  // Closing the DB connection allows Jest to exit successfully.
+  db.mongoose.connection.close()
+  done()
+})
+
+
+describe("Litmus Test", () => {
+  it("should test that true === true", () => {
+    expect(true).toBe(true);
+  });
+});
+
+describe("Test Base API endpoint", () => {
+  it("should test that endpoint is reached", async () => {
     const res = await request(app).get("/");
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("msg");
-    expect(res.body.msg).toEqual("Welcome to application.");  
-  })
-})
+    expect(res.body.msg).toEqual("Welcome to application.");
+  });
+});
 
 describe("User Endpoints", () => {
   it("should try to create a new user and validate cpf", async () => {
@@ -38,7 +47,8 @@ describe("User Endpoints", () => {
     const res = await request(app).post("/api/customers/findByCPF").send({
       cpf: "88522633910",
     });
-    expect(res.statusCode).toEqual(200);
+    console.log(res)
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("success");
     expect(res.body).toHaveProperty("msg");
     expect(res.body).toEqual({

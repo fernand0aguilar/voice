@@ -22,13 +22,13 @@ export default class CustomersList extends Component {
 
   retrieveCustomers() {
     CustomerDataService.getAll()
-      .then(response => {
+      .then((response) => {
         this.setState({
-          customers: response.data
+          customers: response.data,
         });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
@@ -37,14 +37,14 @@ export default class CustomersList extends Component {
     this.retrieveCustomers();
     this.setState({
       currentCustomer: null,
-      currentIndex: -1
+      currentIndex: -1,
     });
   }
 
   setActiveCustomer(customer, index) {
     this.setState({
       currentCustomer: customer,
-      currentIndex: index
+      currentIndex: index,
     });
   }
 
@@ -52,68 +52,82 @@ export default class CustomersList extends Component {
     const { customers, currentCustomer, currentIndex } = this.state;
 
     return (
-      <div className="list row">
-        <div className="col-md-6">
+      <div className="list container">
+        <div className="row">
           <h4>Customers List</h4>
-          <ul className="list-group">
-            {customers &&
-              customers.map((customer, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveCustomer(customer, index)}
-                  key={index}
-                >
-                {customer.nome} {customer.sobrenome}
-                </li>
-              ))}
-          </ul>
         </div>
-        <div className="col-md-6">
-          {currentCustomer ? (
-            <div>
-              <h4>Customer</h4>
-              <div>
-                <label>
-                  <strong>Nome:</strong>
-                </label>{" "}
-                {currentCustomer.nome}
-              </div>
-              <div>
-                <label>
-                  <strong>Sobrenome:</strong>
-                </label>{" "}
-                {currentCustomer.sobrenome}
-              </div>
-              <div>
-                <label>
-                  <strong>Telefone:</strong>
-                </label>{" "}
-                {currentCustomer.telefone}
-              </div>
-              <div>
-                <label>
-                  <strong>CPF:</strong>
-                </label>{" "}
-                {currentCustomer.cpf}
-              </div>
+        {customers.length !== 0 ? (
+          <div className="row">
+            <div className="col-md-6">
+              <ul className="list-group">
+                {customers &&
+                  customers.map((customer, index) => (
+                    <li
+                      className={
+                        "list-group-item " +
+                        (index === currentIndex ? "active" : "")
+                      }
+                      onClick={() => this.setActiveCustomer(customer, index)}
+                      key={index}
+                    >
+                      {customer.nome} {customer.sobrenome}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div className="col-md-6">
+              {currentCustomer ? (
+                <div>
+                  <h4>Customer</h4>
+                  <div>
+                    <label>
+                      <strong>Nome:</strong>
+                    </label>{" "}
+                    {currentCustomer.nome}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Sobrenome:</strong>
+                    </label>{" "}
+                    {currentCustomer.sobrenome}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Telefone:</strong>
+                    </label>{" "}
+                    {currentCustomer.telefone}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>CPF:</strong>
+                    </label>{" "}
+                    {currentCustomer.cpf}
+                  </div>
 
-              <Link
-                to={"/customers/" + currentCustomer.id}
-                className="badge badge-warning"
-              >
-                Edit
-              </Link>
+                  <Link
+                    to={"/customers/" + currentCustomer.id}
+                    className="badge badge-warning"
+                  >
+                    Edit
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <br />
+                  <p>Please click on a Customer...</p>
+                </div>
+              )}
             </div>
-          ) : (
-            <div>
-              <br />
-              <p>Please click on a Customer...</p>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div>
+            <h1>There is no customers on the current list</h1>
+            <p>please add a new one</p>
+            <Link to={"/add/"} className="badge badge-warning">
+              Add
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
