@@ -25,6 +25,7 @@ jobs:
       
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.4.1
+        mongodb-port: 27017
 
 
       - name: Install dependencies

@@ -8,7 +8,6 @@ export default class CustomersList extends Component {
     this.retrieveCustomers = this.retrieveCustomers.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveCustomer = this.setActiveCustomer.bind(this);
-    this.removeAllCustomers = this.removeAllCustomers.bind(this);
 
     this.state = {
       customers: [],
@@ -47,17 +46,6 @@ export default class CustomersList extends Component {
       currentCustomer: customer,
       currentIndex: index
     });
-  }
-
-  removeAllCustomers() {
-    CustomerDataService.deleteAll()
-      .then(response => {
-        console.log(response.data);
-        this.refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
   }
 
   render() {

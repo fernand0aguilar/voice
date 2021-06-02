@@ -4,7 +4,10 @@ module.exports = (mongoose) => {
       nome: String,
       sobrenome: String,
       telefone: String,
-      cpf: String
+      cpf: {
+        type: String,
+        unique: true // cpf must be unique
+      }
     },
     { timestamps: true }
   );

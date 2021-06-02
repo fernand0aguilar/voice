@@ -1,0 +1,14 @@
+Git: 
+
+[x] foi legal porém nome do repositório poderia ser melhor, 
+
+documentação muito simples, 
+
+Código: 
+
+deixou vago a parte de front, 
+não tem mensagem de erro no cadastro do usuário, 
+se não conectar com banco de dados a aplicação quebra no backend. 
+(se o banco cai a aplicação para de funcionar) 
+fez estilização boa e simples com muitas funcionalidades e rotas não utilizáveis. 
+se vendeu como front e deixou de fazer coisas básicas, 
